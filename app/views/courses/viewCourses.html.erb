@@ -1,0 +1,46 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Courses</h1>
+
+<table>
+  <thead>
+     <div class="media">
+  <div class="meda-body">
+    <table class ="table table-hover">
+    <tr>
+
+      <th>Professor</th>
+      <th>Course name</th>
+
+      <th colspan="1"></th>
+    </tr>
+  </thead>
+
+ <% if current_user.try(:admin?) %>
+  <%if current_user.id == 1%>
+    <% sql = "Select * From courses where professor like 'Khan' " %>
+<% records_array = ActiveRecord::Base.connection.execute(sql) %>
+    <% records_array.each do |course| %>
+  <tbody>
+    <tr>
+        <td><%= course[4] %></td>
+        <td><%= course[3] %></td>
+        <td><li><%= link_to "Overall Grades", home_pdf_path %></li></td>
+      <%end%>
+      <%end%>
+      </tr>
+    <% end %>
+    <% if current_user.try(:admin?) %>
+  <%if current_user.id == 4%>
+    <% sql = "Select * From courses where professor like 'Rael-Smyth' " %>
+<% records_array = ActiveRecord::Base.connection.execute(sql) %>
+    <% records_array.each do |course| %>
+  <tbody>
+    <tr>
+        <td><%= course[4] %></td>
+        <td><%= course[3] %></td>
+      <td><li><%= link_to "Overall Grades", home_pdf_path %></li></td>
+      <%end%>
+      <%end%>
+      </tr>
+    <% end %>

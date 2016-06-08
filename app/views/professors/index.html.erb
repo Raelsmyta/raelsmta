@@ -1,14 +1,17 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Listing Professors</h1>
-
 <table>
   <thead>
+        <div class="media">
+  <div class="meda-body">
+    <table class ="table table-hover">
     <tr>
-      <th>Professor</th>
-      <th>Firstname</th>
+
+       <th>Firstname</th>
       <th>Lastname</th>
       <th>Email</th>
+
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -16,18 +19,21 @@
   <tbody>
     <% @professors.each do |professor| %>
       <tr>
-        <td><%= professor.professor_id %></td>
-        <td><%= professor.firstname %></td>
+         <td><%= professor.firstname %></td>
         <td><%= professor.lastname %></td>
         <td><%= professor.email %></td>
+      <% if current_user.accountNum == 0 %>
+
         <td><%= link_to 'Show', professor %></td>
         <td><%= link_to 'Edit', edit_professor_path(professor) %></td>
         <td><%= link_to 'Destroy', professor, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+        <% end%>
+    </tr>
+
     <% end %>
   </tbody>
 </table>
 
 <br>
 
-<%= link_to 'New Professor', new_professor_path %>
+

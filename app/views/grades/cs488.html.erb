@@ -1,0 +1,45 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Grades for CS 488</h1>
+
+<table>
+  <thead>
+     <div class="media">
+  <div class="meda-body">
+    <table class ="table table-hover">
+    <tr>
+
+      <th>Student ID</th>
+      <th>Course name</th>
+      <th>Grade</th>
+      <th colspan="1"></th>
+    </tr>
+  </thead>
+  <% if current_user.accountNum == 1 %>
+    <% sql = "Select * From grades where id = 3" %>
+<% records_array = ActiveRecord::Base.connection.execute(sql) %>
+    <% records_array.each do |course| %>
+  <tbody>
+    <tr>
+        <td><%= course[1] %></td>
+        <td><%= course[2] %></td>
+       <td><%= course[4] %></td>
+
+    <%end%>
+    </tr>
+    <%elsif current_user.accountNum == 2 %>
+    <% sql = "Select * From courses where id == 4" %>
+<% records_array = ActiveRecord::Base.connection.execute(sql) %>
+    <% records_array.each do |course| %>
+  <tbody>
+    <tr>
+        <td><%= course[1] %></td>
+        <td><%= course[2] %></td>
+        <td><%= course[4] %></td>
+
+      <%end%>
+      </tr>
+    <% end %>
+
+
+

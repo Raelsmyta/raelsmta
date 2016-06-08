@@ -10,7 +10,7 @@
     <tr>
       <th>Course Name</th>
       <th>Notes</th>
-      <th>Marks</th>
+      <th>Grade</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -30,24 +30,10 @@
 
     <%end%>
       <%end%>
-        <% if current_user.accountNum == 1 %>
-    <% sql = "Select * From grades where id = 2" %>
-<% records_array = ActiveRecord::Base.connection.execute(sql) %>
-    <% records_array.each do |course| %>
-  <tbody>
-    <tr>
-        <td><%= course[0] %></td>
-        <td><%= course[3] %></td>
-        <td><%= course[4] %></td>
-    <%end%>
-      <%end%>
     </tr>
 
   </tbody>
 </table>
 
 <br>
-
-
-
 
