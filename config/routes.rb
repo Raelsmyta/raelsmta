@@ -1,11 +1,19 @@
 Rails.application.routes.draw do
+  get 'home/index'
+
+  get 'home/about'
+
+  get 'home/contact'
+
+  get 'home/pdf'
+
+  get 'home/chatty'
+
   resources :professors
   devise_for :users
   resources :grades
   resources :courses
   resources :students
 
-  get 'student_id' => "grades#student_id"
-
-  root to: 'courses#index'
+  root to: 'home#index'
 end
