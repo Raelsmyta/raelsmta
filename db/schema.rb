@@ -1,10 +1,10 @@
-ActiveRecord::Schema.define(version: 20160607224237) do
+ActiveRecord::Schema.define(version: 20160607235126) do
 
   create_table "courses", force: :cascade do |t|
     t.integer  "student_id"
     t.integer  "crn"
     t.string   "name"
-    t.string   "professor"
+    t.string   "professor_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -16,6 +16,15 @@ ActiveRecord::Schema.define(version: 20160607224237) do
     t.decimal  "marks"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+  end
+
+  create_table "professors", force: :cascade do |t|
+    t.integer  "professor_id"
+    t.string   "firstname"
+    t.string   "lastname"
+    t.string   "email"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
   end
 
   create_table "students", force: :cascade do |t|
